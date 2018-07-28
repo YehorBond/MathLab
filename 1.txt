@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Quadratic_equation
+{
+    class Program
+    {
+        static void Main()
+        {
+            int a;  // Переменная с x2
+            int b;  // Переменная с x
+            int c;  // Переменная без х
+            int x1;  // Неизвестная переменная
+            int x2;  // Неизвестная переменная
+            int D;  // Дискриминант
+            ConsoleKey key = ConsoleKey.Tab;  // Задаем значение клавиши по умолчанию 
+            do
+            {
+                do  // Цикл проверки пользовательского ввода
+                {
+                    Console.Clear();  // Очищаем консоль
+                    Console.WriteLine("ax2 + bx + c = 0");  // Выводим уравнение на экран
+                    Console.Write("Enter value а: ");  // Выводим переменную а
+                    try  // Проверяем
+                    {
+                        a = Convert.ToInt32(Console.ReadLine());  // Записываем пользовательский ввод в переменную 
+                    }
+                    catch (Exception)  // Если будет исключение
+                    {
+                        Console.WriteLine(" You don't enter a number!! ");  // Выводим проблему
+                        a = 0;  // Значение 0
+                    }
+                    Console.Write("Enter value b: ");  // Выводим переменную b
+                    try  // Проверяем
+                    {
+                        b = Convert.ToInt32(Console.ReadLine());  // Записываем пользовательский ввод в переменную 
+                    }
+                    catch (Exception)  // Если будет исключение
+                    {
+                        Console.WriteLine(" You don't enter a number!! ");  // Выводим проблему
+                        b = 0;  // Значение 0
+                    }
+                    Console.Write("Enter value c: ");  // Выводим переменную c
+                    try  // Проверяем
+                    {
+                        c = Convert.ToInt32(Console.ReadLine());  // Записываем пользовательский ввод в переменную 
+                    }
+                    catch (Exception)  // Если будет исключение
+                    {
+                        Console.WriteLine(" You don't enter a number!! ");  // Выводим проблему
+                        c = 0;  // Значение 0
+                    }
+                } while ((a == 0) || (b == 0) || (c == 0));
+
+                Console.WriteLine("{0}x2 + {1}x + {2} = 0", a, b, c);  // Выводим уравнение на экран
+
+                D = Convert.ToInt32(Math.Pow(b, 2)) - 4 * a * c;  // Определяем значение дискриминанта
+
+                if (D > 0) // Если значение дискриминанта больше нуля, то заходим в данный блок
+                {
+                    x1 = (-b + Convert.ToInt32(Math.Sqrt(D))) / (2 * a);  // Вычисляем значение переменной x1
+                    x2 = (-b - Convert.ToInt32(Math.Sqrt(D))) / (2 * a);  // Вычисляем значение переменной x2
+                    Console.WriteLine("x1 = {0}   x2 = {1}", x1, x2);  // Выводим значение x-ов
+                }
+                else if (D == 0)  // Если значение дискриминанта равно нулю, то заходим в данный блок
+                {
+                    x1 = -1 * (b / (2 * a));  // Вычисляем значение переменной x1
+                    x2 = x1;  // Присваиваем значение х1 к х2
+                    Console.WriteLine("x1 = {0}   x2 = {1}", x1, x2);  // Выводим значение x-ов
+                }
+                else
+                {
+                    Console.WriteLine("The value of the discriminant is zero");
+                }
+                Console.WriteLine("If you want to repeat, please press Enter or press Escape to exit....");
+                key = Console.ReadKey().Key;  // Записываем данное значение в key
+                
+            } while (key != ConsoleKey.Escape);  // Если условие не выполняется, то выходим из цикла 
+
+            
+
+        }
+    }
+}

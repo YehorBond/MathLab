@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace The_greatest_common_divisor
+{
+    class Program
+    {
+        static void Main()
+        {
+            int a;  // Первое число
+            int b;  // Второе число 
+            int greatComDiv;  // Наибольший общий делитель 
+            ConsoleKey key = ConsoleKey.Tab;  // Задаем значение клавиши по умолчанию 
+            do
+            {
+                do  // Цикл проверки пользовательского ввода
+                {
+                    Console.Clear();  // Очищаем консоль
+                    Console.WriteLine("Determine the greatest common divisor");
+                    Console.Write("Enter first number : ");  // Выводим переменную а
+                    try  // Проверяем
+                    {
+                        a = Convert.ToInt32(Console.ReadLine());  // Записываем пользовательский ввод в переменную 
+                    }
+                    catch (Exception)  // Если будет исключение
+                    {
+                        Console.WriteLine(" You don't enter a number!! ");  // Выводим проблему
+                        a = 0;  // Значение 0
+                    }
+                    Console.Write("Enter second number ");  // Выводим переменную b
+                    try  // Проверяем
+                    {
+                        b = Convert.ToInt32(Console.ReadLine());  // Записываем пользовательский ввод в переменную 
+                    }
+                    catch (Exception)  // Если будет исключение
+                    {
+                        Console.WriteLine(" You don't enter a number!! ");  // Выводим проблему
+                        b = 0;  // Значение 0
+                    }
+                } while ((a == 0) || (b == 0));  // Выходи из цикла только при не нулнвых значениях 
+
+                while ((a != 0) && (b != 0))  // Выполняем алгоритм Евклида
+                {
+                    if (a > b)  // Если а > b
+                    {
+                        a = a % b;  // Присваиваем а значения остатка от деления а на b
+                    }
+                    else  // Если нет
+                    {
+                        b = b % a;  // Присваиваем b значения остатка от деления b на a
+                    }
+                }
+                greatComDiv = a + b;  // Расчитываем НОД
+                Console.WriteLine("НОД :  {0}", greatComDiv);  // Выводим ответ на экран
+                Console.WriteLine("If you want to repeat, please press Enter or press Escape to exit....");
+                key = Console.ReadKey().Key;  // Записываем данное значение в key
+            } while (key != ConsoleKey.Escape);  // Если условие не выполняется, то выходим из цикла 
+        }
+    }
+}
