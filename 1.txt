@@ -79,9 +79,6 @@ namespace Quadratic_equation
                 key = Console.ReadKey().Key;  // Записываем данное значение в key
                 
             } while (key != ConsoleKey.Escape);  // Если условие не выполняется, то выходим из цикла 
-
-            
-
-        }
+	}
     }
 }
